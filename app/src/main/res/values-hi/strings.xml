@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">UrbanFix</string>
+
+    <!-- Onboarding & Auth -->
+    <string name="onboarding_title_welcome">UrbanFix में आपका स्वागत है</string>
+    <string name="onboarding_subtitle_welcome">सभी घरेलू सेवाओं के लिए आपका भरोसेमंद साथी</string>
+    <string name="onboarding_select_language">भाषा चुनें</string>
+    <string name="onboarding_language_english">English</string>
+    <string name="onboarding_language_hindi">हिन्दी</string>
+    <string name="onboarding_terms_prefix">जारी रखकर, आप हमारी </string>
+    <string name="onboarding_terms_of_service">सेवा की शर्तों</string>
+    <string name="onboarding_privacy_policy">गोपनीयता नीति</string>
+    <string name="onboarding_next">अगला</string>
+    <string name="onboarding_separator">"  |  "</string>
+
+    <string name="onboarding_title_role">इस रूप में जारी रखें</string>
+    <string name="onboarding_subtitle_role">चुनें कि आप ऐप का उपयोग कैसे करना चाहते हैं</string>
+    <string name="onboarding_role_customer">मुझे सेवा चाहिए</string>
+    <string name="onboarding_role_customer_desc">ग्राहक के रूप में लॉगिन करें</string>
+    <string name="onboarding_role_worker">मैं काम करना चाहता हूँ</string>
+    <string name="onboarding_role_worker_desc">पेशेवर के रूप में लॉगिन करें</string>
+
+    <string name="auth_title_login_customer">ग्राहक के रूप में लॉगिन करें</string>
+    <string name="auth_title_login_worker">पेशेवर के रूप में लॉगिन करें</string>
+    <string name="auth_subtitle_login">सेवाएं बुक करने, काम ट्रैक करने और बहुत कुछ करने के लिए अपने खाते तक पहुंचें।</string>
+    <string name="auth_google_button">Google के साथ जारी रखें</string>
+    <string name="auth_email_button">ईमेल के साथ जारी रखें</string>
+    <string name="auth_phone_button">फोन के साथ जारी रखें</string>
+    <string name="auth_no_account">खाता नहीं है?</string>
+    <string name="auth_sign_up">साइन अप करें</string>
+    <string name="auth_or">या</string>
+
+    <!-- Home Screen -->
+    <string name="home_greeting_morning">सुप्रभात, %1$s 👋</string>
+    <string name="home_greeting_evening">शुभ संध्या, %1$s 👋</string>
+    <string name="home_hero_title">आज हम आपकी कैसे मदद कर सकते हैं?</string>
+    <string name="home_search_placeholder">सेवा खोजें...</string>
+    <string name="home_view_all">सभी देखें</string>
+    <string name="home_see_all">सभी देखें</string>
+
+    <string name="home_section_popular">लोकप्रिय सेवाएं</string>
+    <string name="home_section_how_it_works">यह कैसे काम करता है</string>
+    <string name="home_section_top_rated">शीर्ष रेटेड पेशेवर</string>
+
+    <string name="home_banner_verified">सत्यापित पेशेवर</string>
+    <string name="home_banner_title">आपके द्वार पर भरोसेमंद विशेषज्ञ</string>
+    <string name="home_banner_desc">बैकग्राउंड सत्यापित • समय पर सेवा • विश्वसनीय और कुशल</string>
+    <string name="home_banner_button">सेवा बुक करें</string>
+
+    <!-- Categories -->
+    <string name="cat_plumber">प्लम्बर</string>
+    <string name="cat_electrician">इलेक्ट्रीशियन</string>
+    <string name="cat_carpenter">बढ़ई</string>
+    <string name="cat_ac_repair">एसी मरम्मत</string>
+    <string name="cat_washing_machine">वाशिंग मशीन</string>
+    <string name="cat_ro_service">आरओ सर्विस</string>
+    <string name="cat_painter">पेंटर</string>
+    <string name="cat_more">अधिक</string>
+
+    <!-- Bottom Nav -->
+    <string name="nav_home">होम</string>
+    <string name="nav_bookings">बुकिंग</string>
+    <string name="nav_chats">चैट</string>
+    <string name="nav_profile">प्रोफ़ाइल</string>
+
+    <!-- Drawer Items -->
+    <string name="drawer_profile">प्रोफ़ाइल</string>
+    <string name="drawer_settings">सेटिंग्स</string>
+    <string name="drawer_contact_us">संपर्क करें</string>
+    <string name="drawer_raise_query">प्रश्न पूछें</string>
+    <string name="drawer_language">भाषा</string>
+    <string name="drawer_become_worker">पेशेवर बनें</string>
+    <string name="drawer_logout">लॉग आउट</string>
+
+    <!-- How it works steps -->
+    <string name="step_choose">सेवा चुनें</string>
+    <string name="step_describe">समस्या बताएं</string>
+    <string name="step_match">मिलान करें</string>
+    <string name="step_relax">आराम करें</string>
+
+    <!-- Worker Mode -->
+    <string name="worker_hero_title">आज के लिए तैयार हैं?</string>
+    <string name="worker_section_active_jobs">सक्रिय कार्य</string>
+    <string name="worker_section_new_requests">नए अनुरोध</string>
+    <string name="worker_no_jobs">कोई सक्रिय कार्य नहीं</string>
+    <string name="worker_stat_rating">रेटिंग</string>
+    <string name="worker_stat_earnings">कमाई</string>
+</resources>

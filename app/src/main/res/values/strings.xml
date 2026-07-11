@@ -1,0 +1,88 @@
+<resources>
+    <string name="app_name">UrbanFix</string>
+
+    <!-- Onboarding & Auth -->
+    <string name="onboarding_title_welcome">Welcome to UrbanFix</string>
+    <string name="onboarding_subtitle_welcome">Your trusted partner for all home services</string>
+    <string name="onboarding_select_language">Select Language</string>
+    <string name="onboarding_language_english">English</string>
+    <string name="onboarding_language_hindi">हिन्दी</string>
+    <string name="onboarding_terms_prefix">By continuing, you agree to our </string>
+    <string name="onboarding_terms_of_service">Terms of Service</string>
+    <string name="onboarding_privacy_policy">Privacy Policy</string>
+    <string name="onboarding_next">Next</string>
+    <string name="onboarding_separator">"  |  "</string>
+
+    <string name="onboarding_title_role">Continue as</string>
+    <string name="onboarding_subtitle_role">Choose how you want to use the app</string>
+    <string name="onboarding_role_customer">I need a service</string>
+    <string name="onboarding_role_customer_desc">Login as Customer</string>
+    <string name="onboarding_role_worker">I want to work</string>
+    <string name="onboarding_role_worker_desc">Login as Professional</string>
+
+    <string name="auth_title_login_customer">Login as Customer</string>
+    <string name="auth_title_login_worker">Login as Professional</string>
+    <string name="auth_subtitle_login">Access your account to book services, track jobs and more.</string>
+    <string name="auth_google_button">Continue with Google</string>
+    <string name="auth_email_button">Continue with Email</string>
+    <string name="auth_phone_button">Continue with Phone</string>
+    <string name="auth_no_account">Don\'t have an account?</string>
+    <string name="auth_sign_up">Sign Up</string>
+    <string name="auth_or">or</string>
+
+    <!-- Home Screen -->
+    <string name="home_greeting_morning">Good morning, %1$s 👋</string>
+    <string name="home_greeting_evening">Good evening, %1$s 👋</string>
+    <string name="home_hero_title">How can we help you today?</string>
+    <string name="home_search_placeholder">Search for a service...</string>
+    <string name="home_view_all">View all</string>
+    <string name="home_see_all">See all</string>
+
+    <string name="home_section_popular">Popular Services</string>
+    <string name="home_section_how_it_works">How it works</string>
+    <string name="home_section_top_rated">Top Rated Professionals</string>
+
+    <string name="home_banner_verified">Verified Professionals</string>
+    <string name="home_banner_title">Trusted experts at your doorstep</string>
+    <string name="home_banner_desc">Background verified • On-time service • Reliable &amp; Skilled</string>
+    <string name="home_banner_button">Book a Service</string>
+
+    <!-- Categories -->
+    <string name="cat_plumber">Plumber</string>
+    <string name="cat_electrician">Electrician</string>
+    <string name="cat_carpenter">Carpenter</string>
+    <string name="cat_ac_repair">AC Repair</string>
+    <string name="cat_washing_machine">Washing Machine</string>
+    <string name="cat_ro_service">RO Service</string>
+    <string name="cat_painter">Painter</string>
+    <string name="cat_more">More</string>
+
+    <!-- Bottom Nav -->
+    <string name="nav_home">Home</string>
+    <string name="nav_bookings">Bookings</string>
+    <string name="nav_chats">Chats</string>
+    <string name="nav_profile">Profile</string>
+
+    <!-- Drawer Items -->
+    <string name="drawer_profile">Profile</string>
+    <string name="drawer_settings">Settings</string>
+    <string name="drawer_contact_us">Contact Us</string>
+    <string name="drawer_raise_query">Raise a Query</string>
+    <string name="drawer_language">Language</string>
+    <string name="drawer_become_worker">Become a Worker</string>
+    <string name="drawer_logout">Logout</string>
+
+    <!-- How it works steps -->
+    <string name="step_choose">Choose Service</string>
+    <string name="step_describe">Describe Issue</string>
+    <string name="step_match">Get Matched</string>
+    <string name="step_relax">Relax</string>
+
+    <!-- Worker Mode -->
+    <string name="worker_hero_title">Ready for today?</string>
+    <string name="worker_section_active_jobs">Active Jobs</string>
+    <string name="worker_section_new_requests">New Requests</string>
+    <string name="worker_no_jobs">No active jobs</string>
+    <string name="worker_stat_rating">Rating</string>
+    <string name="worker_stat_earnings">Earnings</string>
+</resources>
