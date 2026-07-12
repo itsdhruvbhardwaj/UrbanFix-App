@@ -22,6 +22,5 @@ dependencyResolutionManagement {
     }
 }
 
-rootProject.name = "UrbanFix"
+rootProject.name = "Urban Crew"
 include(":app")
- 

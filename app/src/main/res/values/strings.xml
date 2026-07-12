@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">UrbanFix</string>
+    <string name="app_name">Urban Crew</string>
 
     <!-- Onboarding & Auth -->
-    <string name="onboarding_title_welcome">Welcome to UrbanFix</string>
+    <string name="onboarding_title_welcome">Welcome to Urban Crew</string>
     <string name="onboarding_subtitle_welcome">Your trusted partner for all home services</string>
     <string name="onboarding_select_language">Select Language</string>
     <string name="onboarding_language_english">English</string>

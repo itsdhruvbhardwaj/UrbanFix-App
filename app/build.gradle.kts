@@ -7,11 +7,11 @@ plugins {
 }
 
 android {
-    namespace = "com.itsdhruvbhardwaj.urbanfix"
+    namespace = "com.urbancrew.app"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "com.itsdhruvbhardwaj.urbanfix"
+        applicationId = "com.urbancrew.app"
         minSdk = 24
         targetSdk = 35
         versionCode = 1
