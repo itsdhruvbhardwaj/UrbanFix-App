@@ -13,9 +13,9 @@ class MockAuthRepositoryImpl @Inject constructor() : AuthRepository {
     private val _currentUser = MutableStateFlow<User?>(null)
     override val currentUser: Flow<User?> = _currentUser
 
-    override suspend fun loginWithGoogle(idToken: String): Result<User> {
+    override suspend fun loginWithGoogle(idToken: String, role: String): Result<User> {
         delay(1000)
-        val user = User("mock_123", "google_user@gmail.com", "Google User", "Customer")
+        val user = User("mock_123", "google_user@gmail.com", "Google User", role)
         _currentUser.value = user
         return Result.success(user)
     }

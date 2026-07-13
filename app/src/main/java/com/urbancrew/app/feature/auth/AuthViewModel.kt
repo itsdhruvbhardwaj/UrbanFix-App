@@ -105,9 +105,10 @@ class AuthViewModel @Inject constructor(
     }
 
     fun loginWithGoogle(idToken: String) {
+        val role = _selectedRole.value ?: Constants.ROLE_CUSTOMER
         viewModelScope.launch {
             _authState.value = AuthState.Loading
-            val result = authRepository.loginWithGoogle(idToken)
+            val result = authRepository.loginWithGoogle(idToken, role)
             if (result.isSuccess) {
                 val user = result.getOrThrow()
                 user.role?.let { userPreferencesRepository.saveRole(it) }
@@ -160,6 +161,10 @@ class AuthViewModel @Inject constructor(
                 onFailure = { AuthState.Error(UiText.StringResource(R.string.error_reset_failed)) }
             )
         }
+    }
+
+    fun setAuthError(message: String) {
+        _authState.value = AuthState.Error(UiText.DynamicString(message))
     }
 
     fun resetAuthState() {

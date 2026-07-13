@@ -79,7 +79,7 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
         }
     }
 
-    override suspend fun loginWithGoogle(idToken: String): Result<User> {
+    override suspend fun loginWithGoogle(idToken: String, role: String): Result<User> {
         return try {
             val credential = GoogleAuthProvider.getCredential(idToken, null)
             val result = firebaseAuth.signInWithCredential(credential).await()
@@ -93,7 +93,7 @@ class FirebaseAuthRepositoryImpl @Inject constructor(
                     id = firebaseUser.uid,
                     email = firebaseUser.email ?: "",
                     name = firebaseUser.displayName,
-                    role = "Customer" 
+                    role = role
                 )
                 firestore.collection("users").document(firebaseUser.uid).set(newUser).await()
                 newUser

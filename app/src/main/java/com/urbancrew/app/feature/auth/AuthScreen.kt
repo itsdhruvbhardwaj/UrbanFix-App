@@ -63,21 +63,41 @@ fun AuthScreen(
         val task = GoogleSignIn.getSignedInAccountFromIntent(result.data)
         try {
             val account = task.getResult(ApiException::class.java)
-            account?.idToken?.let { token -> viewModel.loginWithGoogle(token) }
+            val token = account?.idToken
+            if (token != null) {
+                viewModel.loginWithGoogle(token)
+            } else {
+                viewModel.setAuthError("Google Login Error: ID Token was null.")
+            }
         } catch (e: ApiException) {
-            viewModel.resetAuthState()
+            val errorMsg = when(e.statusCode) {
+                10 -> "DEVELOPER_ERROR: Please add your SHA-1 fingerprint to Firebase Console."
+                7 -> "Network Error: Please check your internet connection."
+                12500 -> "Sign-in Failed: Google Play Services internal error."
+                else -> "Google Error (${e.statusCode}): Please try again."
+            }
+            viewModel.setAuthError(errorMsg)
         }
     }
 
     fun launchGoogleSignIn() {
         val resId = context.resources.getIdentifier("default_web_client_id", "string", context.packageName)
         val webClientId = if (resId != 0) context.getString(resId) else ""
+        
         if (webClientId.isNotEmpty() && !webClientId.contains("placeholder")) {
             val gso = GoogleSignInOptions.Builder(GoogleSignInOptions.DEFAULT_SIGN_IN)
                 .requestIdToken(webClientId)
                 .requestEmail()
+                .requestProfile()
                 .build()
-            googleSignInLauncher.launch(GoogleSignIn.getClient(context, gso).signInIntent)
+            
+            val client = GoogleSignIn.getClient(context, gso)
+            // Sign out first to ensure the account picker always appears
+            client.signOut().addOnCompleteListener {
+                googleSignInLauncher.launch(client.signInIntent)
+            }
+        } else {
+            viewModel.setAuthError("Configuration Error: Web Client ID is missing in strings.xml")
         }
     }
 
@@ -148,9 +168,7 @@ fun AuthScreen(
                         when (page) {
                             Constants.PAGE_LANGUAGE -> LanguagePage(
                                 selectedLanguage = selectedLanguage,
-                                onLanguageSelected = { 
-                                    viewModel.selectLanguage(it)
-                                },
+                                onLanguageSelected = { viewModel.selectLanguage(it) },
                                 onNext = { coroutineScope.launch { pagerState.animateScrollToPage(Constants.PAGE_ROLE) } }
                             )
                             Constants.PAGE_ROLE -> RoleSelectionPage(

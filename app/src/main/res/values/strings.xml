@@ -71,7 +71,7 @@
         google-services.json, we define a placeholder to avoid compilation errors.
         FIX: Replace the value below with your actual Web Client ID from Firebase Console.
     -->
-    <string name="default_web_client_id" translatable="false">150530964837-placeholder.apps.googleusercontent.com</string>
+    <string name="default_web_client_id" translatable="false">150530964837-1dt94moapjtn7t2l4me3houa328o4bri.apps.googleusercontent.com</string>
 
     <!-- Home Screen -->
     <string name="home_greeting_morning">Good morning, %1$s 👋</string>
