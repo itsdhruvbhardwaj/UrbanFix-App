@@ -1,5 +1,6 @@
 package com.urbancrew.app.feature.auth
 
+import androidx.activity.compose.BackHandler
 import androidx.activity.compose.rememberLauncherForActivityResult
 import androidx.activity.result.contract.ActivityResultContracts
 import androidx.compose.animation.*
@@ -41,11 +42,19 @@ fun AuthScreen(
         pageCount = { Constants.AUTH_PAGE_COUNT }
     )
     
+    val coroutineScope = rememberCoroutineScope()
+
+    // Handle back button for pager navigation
+    BackHandler(enabled = pagerState.currentPage > 0) {
+        coroutineScope.launch {
+            pagerState.animateScrollToPage(pagerState.currentPage - 1)
+        }
+    }
+
     LaunchedEffect(pagerState.currentPage) {
         savedPage.intValue = pagerState.currentPage
     }
 
-    val coroutineScope = rememberCoroutineScope()
     val authState by viewModel.authState.collectAsState()
     val selectedLanguage by viewModel.selectedLanguage.collectAsState()
     val selectedRole by viewModel.selectedRole.collectAsState()

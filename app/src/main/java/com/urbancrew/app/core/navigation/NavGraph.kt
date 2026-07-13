@@ -8,10 +8,13 @@ import com.urbancrew.app.feature.auth.AuthScreen
 import com.urbancrew.app.feature.home.HomeScreen
 
 @Composable
-fun NavGraph(navController: NavHostController) {
+fun NavGraph(
+    navController: NavHostController,
+    startDestination: String = Screen.Auth.route
+) {
     NavHost(
         navController = navController,
-        startDestination = Screen.Auth.route
+        startDestination = startDestination
     ) {
         composable(route = Screen.Auth.route) {
             AuthScreen(

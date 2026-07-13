@@ -1,5 +1,8 @@
 package com.urbancrew.app.feature.customer.home
 
+import androidx.compose.animation.AnimatedVisibility
+import androidx.compose.animation.animateContentSize
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.*
 import androidx.compose.foundation.lazy.LazyRow
 import androidx.compose.foundation.lazy.items
@@ -12,8 +15,7 @@ import androidx.compose.material.icons.filled.*
 import androidx.compose.material.icons.outlined.Notifications
 import androidx.compose.material.icons.outlined.Person
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.remember
+import androidx.compose.runtime.*
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
@@ -29,7 +31,7 @@ import androidx.compose.ui.unit.sp
 import com.urbancrew.app.R
 import com.urbancrew.app.ui.theme.Dimens
 
-data class CategoryData(val name: String, val icon: ImageVector)
+data class CategoryData(val name: String, val icon: ImageVector, val id: String = "")
 data class StepData(val icon: ImageVector, val label: String)
 
 @Composable
@@ -174,7 +176,9 @@ fun SearchSection() {
 
 @Composable
 fun PopularServicesSection() {
-    val categories = listOf(
+    var isExpanded by remember { mutableStateOf(false) }
+    
+    val allCategories = listOf(
         CategoryData(stringResource(R.string.cat_plumber), Icons.Default.WaterDrop),
         CategoryData(stringResource(R.string.cat_electrician), Icons.Default.ElectricBolt),
         CategoryData(stringResource(R.string.cat_carpenter), Icons.Default.Handyman),
@@ -182,15 +186,44 @@ fun PopularServicesSection() {
         CategoryData(stringResource(R.string.cat_washing_machine), Icons.Default.LocalLaundryService),
         CategoryData(stringResource(R.string.cat_ro_service), Icons.Default.Waves),
         CategoryData(stringResource(R.string.cat_painter), Icons.Default.FormatPaint),
-        CategoryData(stringResource(R.string.cat_more), Icons.Default.GridView)
+        CategoryData(stringResource(R.string.cat_driver), Icons.Default.DirectionsCar),
+        CategoryData(stringResource(R.string.cat_maid), Icons.Default.CleaningServices),
+        CategoryData(stringResource(R.string.cat_helper), Icons.Default.SupportAgent),
+        CategoryData(stringResource(R.string.cat_kitchen_cleaning), Icons.Default.Kitchen),
+        CategoryData(stringResource(R.string.cat_washroom_cleaning), Icons.Default.Bathtub)
     )
 
-    Column(modifier = Modifier.padding(top = Dimens.PaddingLarge)) {
-        SectionHeader(stringResource(R.string.home_section_popular), stringResource(R.string.home_view_all))
+    val displayCategories = if (isExpanded) {
+        allCategories
+    } else {
+        allCategories.take(7) + CategoryData(stringResource(R.string.cat_more), Icons.Default.GridView, id = "more")
+    }
+
+    Column(modifier = Modifier.padding(top = Dimens.PaddingLarge).animateContentSize()) {
+        SectionHeader(
+            title = stringResource(R.string.home_section_popular),
+            action = if (isExpanded) stringResource(R.string.home_view_less) else stringResource(R.string.home_view_all),
+            onActionClick = { isExpanded = !isExpanded }
+        )
         Column(modifier = Modifier.padding(horizontal = Dimens.PaddingSmall)) {
-            categories.chunked(4).forEach { rowItems ->
+            displayCategories.chunked(4).forEach { rowItems ->
                 Row(modifier = Modifier.fillMaxWidth(), horizontalArrangement = Arrangement.SpaceEvenly) {
-                    rowItems.forEach { item -> CategoryIcon(item) }
+                    rowItems.forEach { item -> 
+                        CategoryIcon(
+                            item = item,
+                            onClick = {
+                                if (item.id == "more") {
+                                    isExpanded = true
+                                }
+                            }
+                        ) 
+                    }
+                    // Fill empty slots in the last row to maintain alignment
+                    if (rowItems.size < 4) {
+                        repeat(4 - rowItems.size) {
+                            Spacer(modifier = Modifier.width(80.dp))
+                        }
+                    }
                 }
             }
         }
@@ -198,9 +231,12 @@ fun PopularServicesSection() {
 }
 
 @Composable
-fun CategoryIcon(item: CategoryData) {
+fun CategoryIcon(item: CategoryData, onClick: () -> Unit = {}) {
     Column(
-        modifier = Modifier.padding(vertical = 8.dp).width(80.dp),
+        modifier = Modifier
+            .padding(vertical = 8.dp)
+            .width(80.dp)
+            .clickable(onClick = onClick),
         horizontalAlignment = Alignment.CenterHorizontally
     ) {
         Surface(
@@ -213,7 +249,7 @@ fun CategoryIcon(item: CategoryData) {
             }
         }
         Spacer(modifier = Modifier.height(6.dp))
-        Text(text = item.name, style = MaterialTheme.typography.labelSmall, textAlign = TextAlign.Center, fontWeight = FontWeight.Medium)
+        Text(text = item.name, style = MaterialTheme.typography.labelSmall, textAlign = TextAlign.Center, fontWeight = FontWeight.Medium, maxLines = 1)
     }
 }
 
@@ -308,13 +344,19 @@ fun TopRatedCard(name: String, rating: String) {
 }
 
 @Composable
-fun SectionHeader(title: String, action: String) {
+fun SectionHeader(title: String, action: String, onActionClick: () -> Unit = {}) {
     Row(
         modifier = Modifier.fillMaxWidth().padding(horizontal = Dimens.PaddingMedium, vertical = Dimens.PaddingSmall),
         horizontalArrangement = Arrangement.SpaceBetween,
         verticalAlignment = Alignment.CenterVertically
     ) {
         Text(text = title, style = MaterialTheme.typography.titleMedium, fontWeight = FontWeight.Bold)
-        Text(text = action, style = MaterialTheme.typography.labelLarge, color = MaterialTheme.colorScheme.primary, fontWeight = FontWeight.SemiBold)
+        Text(
+            text = action, 
+            style = MaterialTheme.typography.labelLarge, 
+            color = MaterialTheme.colorScheme.primary, 
+            fontWeight = FontWeight.SemiBold,
+            modifier = Modifier.clickable { onActionClick() }
+        )
     }
 }

@@ -79,6 +79,7 @@
     <string name="home_hero_title">How can we help you today?</string>
     <string name="home_search_placeholder">Search for a service...</string>
     <string name="home_view_all">View all</string>
+    <string name="home_view_less">View less</string>
     <string name="home_see_all">See all</string>
 
     <string name="home_section_popular">Popular Services</string>
@@ -98,6 +99,11 @@
     <string name="cat_washing_machine">Washing Machine</string>
     <string name="cat_ro_service">RO Service</string>
     <string name="cat_painter">Painter</string>
+    <string name="cat_driver">Driver</string>
+    <string name="cat_maid">Maid</string>
+    <string name="cat_helper">Helper</string>
+    <string name="cat_kitchen_cleaning">Kitchen Cleaning</string>
+    <string name="cat_washroom_cleaning">Washroom Cleaning</string>
     <string name="cat_more">More</string>
 
     <!-- Bottom Nav -->

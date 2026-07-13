@@ -71,6 +71,7 @@
     <string name="home_hero_title">आज हम आपकी कैसे मदद कर सकते हैं?</string>
     <string name="home_search_placeholder">सेवा खोजें...</string>
     <string name="home_view_all">सभी देखें</string>
+    <string name="home_view_less">कम देखें</string>
     <string name="home_see_all">सभी देखें</string>
 
     <string name="home_section_popular">लोकप्रिय सेवाएं</string>
@@ -90,6 +91,11 @@
     <string name="cat_washing_machine">वाशिंग मशीन</string>
     <string name="cat_ro_service">आरओ सर्विस</string>
     <string name="cat_painter">पेंटर</string>
+    <string name="cat_driver">ड्राइवर</string>
+    <string name="cat_maid">कामवाली</string>
+    <string name="cat_helper">सहायक</string>
+    <string name="cat_kitchen_cleaning">रसोई की सफाई</string>
+    <string name="cat_washroom_cleaning">वॉशरूम की सफाई</string>
     <string name="cat_more">अधिक</string>
 
     <!-- Bottom Nav -->
