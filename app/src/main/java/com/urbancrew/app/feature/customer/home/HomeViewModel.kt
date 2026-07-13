@@ -1,4 +1,4 @@
-package com.urbancrew.app.feature.home
+package com.urbancrew.app.feature.customer.home
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
@@ -14,32 +14,17 @@ import javax.inject.Inject
 
 @HiltViewModel
 class HomeViewModel @Inject constructor(
-    private val userPreferencesRepository: UserPreferencesRepository,
-    private val authRepository: AuthRepository
+    private val authRepository: AuthRepository,
+    private val userPreferencesRepository: UserPreferencesRepository
 ) : ViewModel() {
 
-    val userRole: StateFlow<String?> = userPreferencesRepository.userRole
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = null
-        )
-
     val currentUser: StateFlow<User?> = authRepository.currentUser
-        .stateIn(
-            scope = viewModelScope,
-            started = SharingStarted.WhileSubscribed(5000),
-            initialValue = null
-        )
-
-    // Synchronous-like check for initial session validation
-    suspend fun isUserLoggedIn(): Boolean {
-        return authRepository.isUserLoggedIn()
-    }
+        .stateIn(viewModelScope, SharingStarted.WhileSubscribed(5000), null)
 
     fun logout() {
         viewModelScope.launch {
             authRepository.logout()
+            // Clear the persisted role so the app resets to a clean state
             userPreferencesRepository.saveRole("")
         }
     }

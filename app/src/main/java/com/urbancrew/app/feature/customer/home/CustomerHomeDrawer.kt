@@ -21,9 +21,11 @@ import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.urbancrew.app.R
+import com.urbancrew.app.data.model.User
 
 @Composable
 fun CustomerHomeDrawer(
+    user: User?,
     onCloseClick: () -> Unit,
     onLogoutClick: () -> Unit,
     onItemClick: (String) -> Unit
@@ -71,14 +73,23 @@ fun CustomerHomeDrawer(
                         )
                     }
                     Spacer(modifier = Modifier.height(16.dp))
+                    
+                    // Improved display logic: Fallback to email prefix if name is missing
+                    val displayName = when {
+                        !user?.name.isNullOrBlank() -> user?.name
+                        !user?.email.isNullOrBlank() -> user?.email?.substringBefore("@")
+                        user == null -> "Loading Profile..."
+                        else -> "User"
+                    }
+                    
                     Text(
-                        text = "Dhruv Bhardwaj",
+                        text = displayName ?: "User",
                         style = MaterialTheme.typography.titleLarge,
                         fontWeight = FontWeight.Bold,
                         color = Color.White
                     )
                     Text(
-                        text = "dhruv@urbancrew.com",
+                        text = user?.email ?: "Join Urban Crew",
                         style = MaterialTheme.typography.bodyMedium,
                         color = Color.White.copy(alpha = 0.7f)
                     )

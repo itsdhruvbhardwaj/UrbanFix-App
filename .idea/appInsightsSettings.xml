@@ -22,10 +22,10 @@
             <InsightsFilterSettings>
               <option name="connection">
                 <ConnectionSetting>
-                  <option name="appId" value="PLACEHOLDER" />
-                  <option name="mobileSdkAppId" value="" />
-                  <option name="projectId" value="" />
-                  <option name="projectNumber" value="" />
+                  <option name="appId" value="com.urbancrew.app" />
+                  <option name="mobileSdkAppId" value="1:150530964837:android:4d8014ae4f84e18b4ab58c" />
+                  <option name="projectId" value="urban-crew-c7cc0" />
+                  <option name="projectNumber" value="150530964837" />
                 </ConnectionSetting>
               </option>
               <option name="signal" value="SIGNAL_UNSPECIFIED" />

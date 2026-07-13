@@ -1,8 +1,8 @@
 <resources>
-    <string name="app_name">UrbanFix</string>
+    <string name="app_name">Urban Crew</string>
 
     <!-- Onboarding & Auth -->
-    <string name="onboarding_title_welcome">UrbanFix में आपका स्वागत है</string>
+    <string name="onboarding_title_welcome">Urban Crew में आपका स्वागत है</string>
     <string name="onboarding_subtitle_welcome">सभी घरेलू सेवाओं के लिए आपका भरोसेमंद साथी</string>
     <string name="onboarding_select_language">भाषा चुनें</string>
     <string name="onboarding_language_english">English</string>
@@ -29,6 +29,41 @@
     <string name="auth_no_account">खाता नहीं है?</string>
     <string name="auth_sign_up">साइन अप करें</string>
     <string name="auth_or">या</string>
+
+    <string name="auth_verify_email">अपना ईमेल सत्यापित करें</string>
+    <string name="auth_verify_email_desc">हमने आपके ईमेल पर एक लिंक भेजा है। अपना खाता सक्रिय करने के लिए कृपया लिंक पर क्लिक करें और फिर लॉग इन करें।</string>
+    <string name="auth_back_to_login">लॉगिन पर वापस जाएं</string>
+    <string name="auth_welcome_back">वापसी पर स्वागत है!</string>
+    <string name="auth_join_as">%1$s के रूप में जुड़ें</string>
+    <string name="auth_login_desc">अपने खाते में लॉगिन करें</string>
+    <string name="auth_signup_desc">शुरू करने के लिए एक खाता बनाएं</string>
+    <string name="auth_full_name">पूरा नाम</string>
+    <string name="auth_email">ईमेल पता</string>
+    <string name="auth_password">पासवर्ड</string>
+    <string name="auth_forgot_password">पासवर्ड भूल गए?</string>
+    <string name="auth_login">लॉगिन</string>
+    <string name="auth_new_here">यहाँ नए हैं? </string>
+    <string name="auth_already_account">पहले से ही एक खाता है? </string>
+
+    <string name="role_customer">ग्राहक</string>
+    <string name="role_worker">पेशेवर</string>
+
+    <!-- Errors and Messages -->
+    <string name="error_fill_all_fields">कृपया सभी फ़ील्ड भरें</string>
+    <string name="error_invalid_email">कृपया एक मान्य ईमेल पता दर्ज करें</string>
+    <string name="error_password_too_short">पासवर्ड कम से कम 6 अक्षरों का होना चाहिए</string>
+    <string name="error_google_login_failed">Google लॉगिन विफल रहा</string>
+    <string name="error_signup_failed">साइन अप विफल रहा</string>
+    <string name="error_login_failed">लॉगिन विफल रहा</string>
+    <string name="error_email_not_verified">लॉग इन करने से पहले कृपया अपना ईमेल पता सत्यापित करें।</string>
+    <string name="error_reset_failed">रीसेट ईमेल भेजने में विफल</string>
+    <string name="msg_reset_sent">रीसेट ईमेल भेज दिया गया। अपना इनबॉक्स चेक करें।</string>
+
+    <!-- Logout Confirmation -->
+    <string name="logout_confirm_title">लॉग आउट</string>
+    <string name="logout_confirm_message">क्या आप वाकई अपने खाते से लॉग आउट करना चाहते हैं?</string>
+    <string name="logout_confirm_yes">लॉग आउट</string>
+    <string name="logout_confirm_no">रद्द करें</string>
 
     <!-- Home Screen -->
     <string name="home_greeting_morning">सुप्रभात, %1$s 👋</string>

@@ -7,29 +7,58 @@ import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material.icons.Icons
 import androidx.compose.material.icons.filled.Add
 import androidx.compose.material3.*
-import androidx.compose.runtime.Composable
-import androidx.compose.runtime.rememberCoroutineScope
+import androidx.compose.runtime.*
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.unit.dp
+import androidx.hilt.navigation.compose.hiltViewModel
+import com.urbancrew.app.R
 import com.urbancrew.app.ui.theme.Dimens
 import kotlinx.coroutines.launch
 
-/**
- * Main entry point for the Customer Home experience.
- * Orchestrates the Drawer, Scaffold, and scrollable content.
- */
 @Composable
-fun CustomerHomeScreen() {
+fun CustomerHomeScreen(
+    viewModel: HomeViewModel = hiltViewModel(),
+    onLogout: () -> Unit
+) {
     val drawerState = rememberDrawerState(initialValue = DrawerValue.Closed)
     val scope = rememberCoroutineScope()
+    val currentUser by viewModel.currentUser.collectAsState()
+    var showLogoutDialog by remember { mutableStateOf(false) }
+
+    if (showLogoutDialog) {
+        AlertDialog(
+            onDismissRequest = { showLogoutDialog = false },
+            title = { Text(stringResource(R.string.logout_confirm_title)) },
+            text = { Text(stringResource(R.string.logout_confirm_message)) },
+            confirmButton = {
+                TextButton(
+                    onClick = {
+                        showLogoutDialog = false
+                        viewModel.logout()
+                        onLogout()
+                    }
+                ) {
+                    Text(stringResource(R.string.logout_confirm_yes), color = MaterialTheme.colorScheme.error)
+                }
+            },
+            dismissButton = {
+                TextButton(onClick = { showLogoutDialog = false }) {
+                    Text(stringResource(R.string.logout_confirm_no))
+                }
+            }
+        )
+    }
 
     ModalNavigationDrawer(
         drawerState = drawerState,
         drawerContent = {
             CustomerHomeDrawer(
+                user = currentUser,
                 onCloseClick = { scope.launch { drawerState.close() } },
                 onLogoutClick = { 
+                    showLogoutDialog = true
                     scope.launch { drawerState.close() } 
                 },
                 onItemClick = { _ ->
@@ -51,7 +80,7 @@ fun CustomerHomeScreen() {
                     containerColor = MaterialTheme.colorScheme.primary,
                     contentColor = Color.White,
                     shape = CircleShape,
-                    modifier = Modifier.size(60.dp).offset(y = 50.dp)
+                    modifier = Modifier.size(60.dp)
                 ) {
                     Icon(
                         imageVector = Icons.Default.Add,
@@ -68,7 +97,7 @@ fun CustomerHomeScreen() {
                     .padding(paddingValues)
                     .background(MaterialTheme.colorScheme.background)
             ) {
-                item { GreetingSection(name = "Dhruv") }
+                item { GreetingSection(name = currentUser?.name?.split(" ")?.firstOrNull() ?: "User") }
                 item { LocationSection(location = "Sector 62, Noida, Uttar Pradesh") }
                 item { SearchSection() }
                 item { PopularServicesSection() }

@@ -15,7 +15,7 @@ fun NavGraph(navController: NavHostController) {
     ) {
         composable(route = Screen.Auth.route) {
             AuthScreen(
-                onLoginSuccess = {
+                onAuthSuccess = {
                     navController.navigate(Screen.Home.route) {
                         popUpTo(Screen.Auth.route) { inclusive = true }
                     }
@@ -23,7 +23,13 @@ fun NavGraph(navController: NavHostController) {
             )
         }
         composable(route = Screen.Home.route) {
-            HomeScreen()
+            HomeScreen(
+                onLogout = {
+                    navController.navigate(Screen.Auth.route) {
+                        popUpTo(Screen.Home.route) { inclusive = true }
+                    }
+                }
+            )
         }
     }
 }
